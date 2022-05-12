@@ -1,18 +1,31 @@
 package com.example.basic.Entities;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-	
+import javax.persistence.*;
+
+import lombok.*;
+import org.hibernate.envers.Audited;
 @Entity
-@Data
-@EqualsAndHashCode(callSuper = false)
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Audited
 @Table(name = "tbl_profiles")
-public class Profile {
+public class Profile extends Base {
+	@Id
+	@Column(name = "id", nullable = false)
+	private Long id;
+
 	@Column(name = "idprofile")
 	private int idprofile;
 	@Column(name = "profile")
 	private String profile;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 }
